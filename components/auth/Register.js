@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Button, TextInput } from "react-native";
+import firebase from "firebase";
 
 export class Register extends Component {
   constructor(props) {
@@ -15,7 +16,16 @@ export class Register extends Component {
   }
 
   onSignUp() {
-    // TODO: Sign Up functionality
+    const { email, password, name } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPasswords(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {

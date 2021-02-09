@@ -1,8 +1,10 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as firebase from "firebase";
-import React from "react";
+// import * as firebase from "firebase";
+import firebase from "firebase/app";
 import LandingScreen from "./components/auth/Landing";
+import RegisterScreen from "./components/auth/Register";
 
 // For experimental purpose
 const firebaseConfig = {
@@ -29,6 +31,7 @@ export default function App() {
           component={LandingScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
+        <Stack.Screen name="Register" component={RegisterScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
