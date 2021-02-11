@@ -5,15 +5,18 @@ export function fetchUser() {
   return (dispatch) => {
     firebase
       .firestore()
-      .collection("user")
+      .collection("users")
       .doc(firebase.auth().currentUser.uid)
       .get()
       .then((snapshot) => {
-        if (snapshot.exist) {
+        if (snapshot.exists) {
           dispatch({ type: USER_STATE_CHANGE, currentUser: snapshot.data() });
         } else {
           console.log("Dose not exist!");
         }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 }

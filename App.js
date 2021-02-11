@@ -1,16 +1,11 @@
 import React, { Component } from "react";
 import firebase from "firebase/app";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { Text, View } from "react-native";
+// import * as firebase from "firebase";
+import { View, Text } from "react-native";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import LandingScreen from "./components/auth/Londing";
-import RegisterScreen from "./components/auth/Register";
-import MainScreen from "./components/Main";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./redux/reducers";
-
+import thunk from "redux-thunk";
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // For experimental purpose
@@ -27,6 +22,13 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import LandingScreen from "./components/auth/Londing";
+import RegisterScreen from "./components/auth/Register";
+import MainScreen from "./components/Main";
 
 const Stack = createStackNavigator();
 
