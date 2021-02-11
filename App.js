@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import firebase from "firebase/app";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { View, Text } from "react-native";
-// import * as firebase from "firebase";
-import firebase from "firebase/app";
+import { Text, View } from "react-native";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
 import LandingScreen from "./components/auth/Londing";
 import RegisterScreen from "./components/auth/Register";
+import MainScreen from "./components/Main";
+import rootReducer from "./redux/reducers";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // For experimental purpose
 const firebaseConfig = {
@@ -79,9 +85,9 @@ export class App extends Component {
       );
     }
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>User is logged in!</Text>
-      </View>
+      <Provider store={store}>
+        <MainScreen />
+      </Provider>
     );
   }
 }
