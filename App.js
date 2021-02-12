@@ -29,6 +29,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LandingScreen from "./components/auth/Londing";
 import RegisterScreen from "./components/auth/Register";
 import MainScreen from "./components/Main";
+import AddScreen from "./components/main/Add";
 
 const Stack = createStackNavigator();
 
@@ -95,6 +96,7 @@ export class App extends Component {
               component={MainScreen}
               options={{ headerShown: false }}
             ></Stack.Screen>
+            <Stack.Screen name="Add" component={AddScreen}></Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
