@@ -88,13 +88,15 @@ export class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Stack.Navigator initialRouteName="Main">
-          <Stack.Screen
-            name="Main"
-            component={MainScreen}
-            options={{ headerShown: false }}
-          ></Stack.Screen>
-        </Stack.Navigator>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Main">
+            <Stack.Screen
+              name="Main"
+              component={MainScreen}
+              options={{ headerShown: false }}
+            ></Stack.Screen>
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     );
   }
