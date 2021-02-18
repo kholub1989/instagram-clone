@@ -46,7 +46,13 @@ function Profile(props) {
           setUserPosts(posts);
         });
     }
-  }, [props.route.params.uid]);
+
+    if (props.following.indexOf(props.route.params.uid) > -1) {
+      setFollowing(true);
+    } else {
+      setFollowing(false);
+    }
+  }, [props.route.params.uid, props.following]);
 
   const onFollow = () => {
     firebase
@@ -126,5 +132,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (store) => ({
   currentUser: store.userState.currentUser,
   posts: store.userState.posts,
+  following: store.userState.following,
 });
 export default connect(mapStateToProps, null)(Profile);
