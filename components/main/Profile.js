@@ -63,7 +63,6 @@ function Profile(props) {
       .doc(props.route.params.uid)
       .set({});
   };
-
   const onUnfollow = () => {
     firebase
       .firestore()

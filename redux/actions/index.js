@@ -6,6 +6,7 @@ import {
   USERS_POSTS_STATE_CHANGE,
 } from "../constants/index";
 import firebase from "firebase";
+require("firebase/firestore");
 
 export function fetchUser() {
   return (dispatch) => {
@@ -73,7 +74,6 @@ export function fetchUserFollowing() {
 export function fetchUsersData(uid) {
   return (dispatch, getState) => {
     const found = getState().usersState.users.some((el) => el.uid === uid);
-
     if (!found) {
       firebase
         .firestore()
@@ -105,7 +105,8 @@ export function fetchUsersFollowingPosts(uid) {
       .orderBy("creation", "asc")
       .get()
       .then((snapshot) => {
-        const uid = snapshot.query.EP.path.segments[1];
+        // console.log("=>>>>>> ", snapshot.query.d_.C_.path.segments[1]);
+        const uid = snapshot.query.d_.C_.path.segments[1];
         const user = getState().usersState.users.find((el) => el.uid === uid);
 
         let posts = snapshot.docs.map((doc) => {
