@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   users: [],
-  userLoaded: 0,
+  usersLoaded: 0,
 };
 
 export const users = (state = initialState, action) => {

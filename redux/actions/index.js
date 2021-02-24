@@ -114,8 +114,9 @@ export function fetchUsersFollowingPosts(uid) {
           const id = doc.id;
           return { id, ...data, user };
         });
-
+        console.log(posts);
         dispatch({ type: USERS_POSTS_STATE_CHANGE, posts, uid });
+        console.log(getState());
       });
   };
 }
