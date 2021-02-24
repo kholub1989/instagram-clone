@@ -72,7 +72,7 @@ function Profile(props) {
   };
 
   const onLogout = () => {
-    // TODO: logout functionality
+    firebase.auth().signOut();
   };
 
   if (user === null) {
