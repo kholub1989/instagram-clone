@@ -93,14 +93,13 @@ export function fetchUsersData(uid, getPosts) {
             user.uid = snapshot.id;
 
             dispatch({ type: USERS_DATA_STATE_CHANGE, user });
-            
           } else {
             console.log("does not exist");
           }
         });
-        if(getPosts) {
-          dispatch(fetchUsersFollowingPosts(user.id));
-        }
+      if (getPosts) {
+        dispatch(fetchUsersFollowingPosts(uid));
+      }
     }
   };
 }
