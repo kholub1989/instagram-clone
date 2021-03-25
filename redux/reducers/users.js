@@ -22,7 +22,7 @@ export const users = (state = initialState, action) => {
       return {
         ...state,
         usersFollowingLoaded: state.usersFollowingLoaded + 1,
-        feed: [...state.feed, action.post],
+        feed: [...state.feed, ...action.post],
       };
     case USERS_LIKES_STATE_CHANGE:
       return {
