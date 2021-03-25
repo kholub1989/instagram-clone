@@ -1,6 +1,7 @@
 import {
   USERS_DATA_STATE_CHANGE,
   USERS_POSTS_STATE_CHANGE,
+  USERS_LIKES_STATE_CHANGE,
   CLEAR_DATA,
 } from "../constants";
 
@@ -21,13 +22,22 @@ export const users = (state = initialState, action) => {
       return {
         ...state,
         usersFollowingLoaded: state.usersFollowingLoaded + 1,
-        feed: [...state.feed, action.post]
+        feed: [...state.feed, action.post],
+      };
+    case USERS_LIKES_STATE_CHANGE:
+      return {
+        ...state,
+        feed: state.feed.map((post) =>
+          post.id == action.postId
+            ? {
+                ...post,
+                currentUseLike: action.currentUseLike,
+              }
+            : post
+        ),
       };
     case CLEAR_DATA:
-      return {
-        users: [],
-        usersFollowingLoaded: 0,
-      };
+      return initialState;
     default:
       return state;
   }
